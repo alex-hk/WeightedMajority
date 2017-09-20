@@ -10,7 +10,7 @@ private:
 	int numwrong;
 	
 public:
-	Expert(){weight = 1f;}
+	Expert(){weight = 1.0f; prediction = 0; totalpred = 0; numwrong = 0;}
 	float getWeight() { return weight; }
 	int getPrediction() { return prediction; }
 	int getTotal() { return totalpred; }
