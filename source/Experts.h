@@ -12,7 +12,7 @@ struct option {
 class Experts {
 private:
 	float beta;
-	std::vector<Expert*> experts;
+	std::vector<Expert> experts;
 	std::vector<int> input;
 	std::vector<option*> counts;
 
@@ -21,6 +21,6 @@ public:
 	void init(int exp);
 	void printExperts();
 	int getMajority();
-	void updateExperts(int choice);
+	void updateExperts(int correct);
 	void predictions();
 };

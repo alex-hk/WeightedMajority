@@ -15,10 +15,16 @@ public:
 	int getPrediction() { return prediction; }
 	int getTotal() { return totalpred; }
 	int getWrong() { return numwrong; }
-	void adjustWeight(float beta) { weight -= (beta*weight); }
+	void adjust(float beta, bool right) {
+		totalpred++;
+		if(!right){
+			weight -= (beta*weight);
+			numwrong++;
+		}
+	}
 	void predict(std::vector<int> input) {
 		srand(time(NULL));
-		int randnum = rand() % (input.size()) - 1;
+		int randnum = rand() % (input.size());
 		prediction = input[randnum];
 	}
 	
