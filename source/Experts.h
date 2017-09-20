@@ -7,6 +7,7 @@
 struct option {
 	int key;
 	int value;
+	float tweight;
 };
 
 class Experts {
@@ -23,4 +24,5 @@ public:
 	int getMajority();
 	void updateExperts(int correct);
 	void predictions();
+	void resetCounts();
 };

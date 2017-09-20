@@ -21,23 +21,31 @@ void Experts::printExperts() {
 	for (int i = 0; i < experts.size(); i++) {
 		total = experts[i].getTotal();
 		wrong = experts[i].getWrong();
-		printf("Expert %d:: Prediction: %d  Total: %d  Wrong: %d  Correct:%d  Weight:%f\n", i, total, wrong, (total-wrong), experts[i].getWeight());
+		printf("Expert %d:: Prediction: %d  Total: %d  Wrong: %d  Correct:%d  Weight:%f\n", i, experts[i].getPrediction(), total, wrong, (total-wrong), experts[i].getWeight());
 	}
 	printf("===================================\n\n");
+}
+
+void Experts::resetCounts(){
+	for(int i = 0; i < counts.size(); i++){
+		counts[i]->tweight = 0;
+		counts[i]->value = 0;
+	}
 }
 
 int Experts::getMajority() {
 	for (int i = 0; i < experts.size(); i++) {
 		int value = experts[i].getPrediction();
+		float expweight = experts[i].getWeight();
 		for(int j = 0; j < counts.size(); j++){
-			if(counts[j]->key == value) counts[j]->value++;
+			if(counts[j]->key == value) { counts[j]->value++; counts[j]->tweight+=expweight;}
 		}		
 	}
 
-	int max = -1;
+	float max = -1.0f;
 	int maxkey = -1;
 	for (int j = 0; j < counts.size(); j++) {
-		if (counts[j]->value > max) { max = counts[j]->value; maxkey = counts[j]->key; }
+		if (counts[j]->tweight > max) { max = counts[j]->tweight; maxkey = counts[j]->key; }
 	}
 
 	return maxkey;

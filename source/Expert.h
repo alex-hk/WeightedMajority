@@ -23,8 +23,7 @@ public:
 		}
 	}
 	void predict(std::vector<int> input) {
-		srand(time(NULL));
-		int randnum = rand() % (input.size());
+		int randnum = rand() % (input.size());	
 		prediction = input[randnum];
 	}
 	
