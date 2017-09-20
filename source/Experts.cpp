@@ -7,6 +7,13 @@ void Experts::init(int exp){
 	for(int i = 0; i < exp; i++){
 		experts.push_back(new Expert())
 	}
+	
+	for(int j = 0; j < input.size(); j++){
+		option * op = new option();
+		op->key = input[j];
+		op->value = 0;
+		count.push_back(op)
+	}	
 }
 
 void Experts::printExperts() {
@@ -34,5 +41,11 @@ int Experts::getMajority() {
 void Experts::updateExperts(int choice) {
 	for (int i = 0; i < experts.size(); i++) {
 		if (experts[i].getPrediction() != choice) experts[i].adjustWeight(beta);
+	}
+}
+
+void Experts::predictions(){
+	for(int i = 0; i < experts.size(); i++){
+		
 	}
 }
