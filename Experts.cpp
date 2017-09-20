@@ -3,6 +3,12 @@
 
 using namespace std;
 
+void Experts::init(int exp){
+	for(int i = 0; i < exp; i++){
+		experts.push_back(new Expert())
+	}
+}
+
 void Experts::printExperts() {
 	for (int i = 0; i < experts.size(); i++) {
 		int total = experts[i].getTotal();
@@ -12,7 +18,7 @@ void Experts::printExperts() {
 }
 
 int Experts::getMajority() {
-	vector<int> totals;
+	vector<int> totals(input.size(), 0);
 	for (int i = 0; i < experts.size(); i++) {
 		totals[experts[i].getPrediction()] += 1;
 	}
